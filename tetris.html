@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Boy Tetris</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- Game Boy (Center) -->
+    <div class="gameboy">
+        <div class="game-title">
+            <h1>BOOTLEG TETRIS :D </h1>
+            <p>MADE BY ASHWIN</p>
+            <p>with the help of cursor :)</p>
+        </div>
+        <div class="screen menu-screen" id="mainScreen">
+            <div class="start-screen" id="startScreen" style="display: block;">
+                    <h2>NOT TETRIS </h2>
+                    <p>*wink wink*</p>
+                <p>Press R to start</p>
+            </div>
+            <div class="instructions-screen" id="instructionsScreen" style="display: none;">
+                <div class="instructions-part active" id="instructionsPart1">
+                    <h2>HOW TO PLAY</h2>
+                    <p>Arrange falling blocks to fill horizontal lines!</p>
+                    <p>Complete lines disappear and give you points.</p>
+                    <p>Game gets faster as you level up.</p>
+                    <p>Use the preview to plan ahead!</p>
+                    <div class="instructions-nav">Press ENTER for controls</div>
+                </div>
+                
+                <div class="instructions-part" id="instructionsPart2">
+                    <h2>CONTROLS</h2>
+                    <div class="controls-section">
+                        <p><strong>SPACE</strong> - Rotate</p>
+                        <p><strong>A</strong> - Move left</p>
+                        <p><strong>S</strong> - Move down</p>
+                        <p><strong>D</strong> - Move right</p>
+                        <p><strong>R</strong> - Restart</p>
+                    </div>
+                    <div class="instructions-nav">Press R to begin!</div>
+                </div>
+            </div>
+            <div class="game-over" id="gameOver" style="display: none;">
+                <h2>GAME OVER</h2>
+                <div class="game-over-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">FINAL SCORE</span>
+                        <span class="stat-value" id="finalScore">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">LINES CLEARED</span>
+                        <span class="stat-value" id="finalLines">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">LEVEL REACHED</span>
+                        <span class="stat-value" id="finalLevel">1</span>
+                    </div>
+                </div>
+                <p>Press R to restart</p>
+            </div>
+        </div>
+
+            <div class="screen game-screen" id="gameScreen" style="display: none;">
+                <div class="preview-area">
+                    <div class="preview-block">
+                        <div class="preview-title">NEXT</div>
+                        <canvas id="nextCanvas1" width="40" height="40"></canvas>
+                    </div>
+                </div>
+                
+                <div class="game-area">
+                    <canvas id="gameCanvas" width="200" height="240"></canvas>
+                </div>
+                
+                <div class="preview-area right-preview">
+                    <div class="preview-block">
+                        <div class="preview-title">AFTER</div>
+                        <canvas id="nextCanvas2" width="40" height="40"></canvas>
+                    </div>
+                </div>
+                
+                <!-- Pause Overlay -->
+                <div class="pause-overlay" id="pauseOverlay" style="display: none;">
+                    <div class="pause-content">
+                        <h2>PAUSED</h2>
+                        <p>Press ESC or MENU to resume</p>
+                    </div>
+                </div>
+        </div>
+
+        <!-- Second Screen for Score Display -->
+        <div class="second-screen" id="secondScreen">
+            <div class="scoreboard">
+                <div class="scoreboard-item">
+                    <div class="scoreboard-label">SCORE</div>
+                    <div class="scoreboard-value" id="scoreboardScore">0</div>
+                </div>
+                <div class="scoreboard-item">
+                    <div class="scoreboard-label">LINES</div>
+                    <div class="scoreboard-value" id="scoreboardLines">0</div>
+                </div>
+                <div class="scoreboard-item">
+                    <div class="scoreboard-label">LEVEL</div>
+                    <div class="scoreboard-value" id="scoreboardLevel">1</div>
+                </div>
+            </div>
+        </div>
+            
+            <!-- Controls Layout -->
+            <div class="controls-layout">
+                <!-- D-Pad Controls (Left Side) -->
+                <div class="dpad-container">
+                    <div class="dpad">
+                        <button class="dpad-btn dpad-up" id="dpadUp">↑</button>
+                        <div class="dpad-middle">
+                            <button class="dpad-btn dpad-left" id="dpadLeft">←</button>
+                            <button class="dpad-btn dpad-center" id="dpadCenter">●</button>
+                            <button class="dpad-btn dpad-right" id="dpadRight">→</button>
+                        </div>
+                        <button class="dpad-btn dpad-down" id="dpadDown">↓</button>
+                    </div>
+                </div>
+                
+                <!-- Mobile Action Buttons (Right Side) -->
+                <div class="mobile-buttons">
+                    <button class="mobile-btn start-btn" id="mobileStart">START</button>
+                    <button class="mobile-btn menu-btn" id="mobileMenu">MENU</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- External Controls (Right Side) -->
+        <div class="external-controls">
+        <div class="controls">
+            <h3>CONTROLS</h3>
+                
+                <!-- Keyboard Controls -->
+                <div class="control-section">
+                    <h4>Keyboard</h4>
+                    <div class="control-group">
+                        <div class="control-item">
+                            <span class="key">W</span>
+                            <span class="action">Rotate</span>
+                        </div>
+                        <div class="control-item">
+                            <span class="key">A</span>
+                            <span class="action">Move Left</span>
+                        </div>
+                        <div class="control-item">
+                            <span class="key">D</span>
+                            <span class="action">Move Right</span>
+                        </div>
+                        <div class="control-item">
+                            <span class="key">S</span>
+                            <span class="action">Move Down</span>
+                        </div>
+                        <div class="control-item">
+                            <span class="key">Space</span>
+                            <span class="action">Instant Drop</span>
+                        </div>
+                        <div class="control-item">
+                            <span class="key">R</span>
+                            <span class="action">Restart</span>
+                        </div>
+                        <div class="control-item">
+                            <span class="key">Esc</span>
+                            <span class="action">Pause</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- D-Pad Controls -->
+                <div class="control-section">
+                    <h4>D-Pad (Inside Game Boy)</h4>
+                    <div class="control-group">
+                        <div class="control-item">
+                            <span class="key dpad-key dpad-up-control">↑</span>
+                            <span class="action">Rotate</span>
+                        </div>
+                        <div class="control-item">
+                            <span class="key dpad-key dpad-left-control">←</span>
+                            <span class="action">Move Left</span>
+                        </div>
+                        <div class="control-item">
+                            <span class="key dpad-key dpad-right-control">→</span>
+                            <span class="action">Move Right</span>
+                        </div>
+                        <div class="control-item">
+                            <span class="key dpad-key dpad-down-control">↓</span>
+                            <span class="action">Move Down</span>
+                        </div>
+                        <div class="control-item">
+                            <span class="key dpad-key dpad-center-control">●</span>
+                            <span class="action">Instant Drop</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Buttons -->
+                <div class="control-section">
+                    <h4>Mobile Buttons (Inside Game Boy)</h4>
+                    <div class="control-group">
+                        <div class="control-item">
+                            <span class="key">START</span>
+                            <span class="action">Start Game / Instructions</span>
+                        </div>
+                        <div class="control-item">
+                            <span class="key">MENU</span>
+                            <span class="action">Pause / Resume</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Special Functions -->
+                <div class="control-section">
+                    <h4>Special Functions</h4>
+                    <div class="control-group">
+                        <div class="control-item">
+                            <span class="key">R</span>
+                            <span class="action">Quick Restart (during game)</span>
+                        </div>
+                        <div class="control-item">
+                            <span class="key">Esc</span>
+                            <span class="action">Pause / Resume</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
