@@ -48,7 +48,12 @@ git clone https://github.com/your-username/not-tetris.git
 cd not-tetris
 ```
 
-Open `tetris.html` in your browser — that’s it! 🎉  
+Open `tetris.html` in your browser — that’s it! 🎉
+
+### Project files
+- `tetris.html` → page structure / markup
+- `styles.css` → all styling
+- `game.js` → game logic and controls
 
 ---
 
