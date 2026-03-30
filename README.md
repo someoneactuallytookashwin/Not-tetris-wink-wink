@@ -1,13 +1,13 @@
-# 🎮 Not Tetris (wink wink)  
+# Not Tetris (wink wink)  
 
 A retro-styled Tetris clone built inside a Game Boy shell UI.  
 Made during a creative block while rewriting my UX case studies — instead of *playing* Tetris to reset, I decided to build one myself.  
 
-Hosted on Vercel 👉 [Play it here](https://not-tetris-wink-wink.vercel.app/)  
+Hosted on Vercel  [Play it here](https://not-tetris-wink-wink.vercel.app/)  
 
 ---
 
-## ✨ Features  
+##  Features  
 - Classic Tetris gameplay with line clears, scoring, and levels  
 - Game Boy–style shell & retro pixel fonts  
 - Preview of next pieces (like the original)  
@@ -16,7 +16,7 @@ Hosted on Vercel 👉 [Play it here](https://not-tetris-wink-wink.vercel.app/)
 
 ---
 
-## 🎮 Controls  
+##  Controls  
 
 ### Desktop  
 - **W** → Rotate  
@@ -31,7 +31,7 @@ Hosted on Vercel 👉 [Play it here](https://not-tetris-wink-wink.vercel.app/)
 
 ---
 
-## 🚀 Tech Stack  
+##  Tech Stack  
 - **HTML5 Canvas** for rendering the game  
 - **CSS** for the retro Game Boy shell and styling  
 - **Vanilla JavaScript** for game logic  
@@ -40,7 +40,7 @@ Hosted on Vercel 👉 [Play it here](https://not-tetris-wink-wink.vercel.app/)
 
 ---
 
-## 🛠️ Getting Started  
+##  Getting Started  
 
 Clone the repo:  
 ```bash
@@ -48,7 +48,7 @@ git clone https://github.com/your-username/not-tetris.git
 cd not-tetris
 ```
 
-Open `tetris.html` in your browser — that’s it! 🎉
+Open `tetris.html` in your browser — that’s it! 
 
 ### Project files
 - `tetris.html` → page structure / markup
@@ -59,7 +59,7 @@ Open `tetris.html` in your browser — that’s it! 🎉
 
 
 
-## 🤓 Why This Exists  
+##  Why This Exists  
 
 I hit a creative block while working on my design portfolio. Usually I reset with a few games of Tetris, but this time I thought — why not *make* one instead?  
 This project became my little playground for tinkering with Cursor and having some fun with retro aesthetics.  
