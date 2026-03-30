@@ -66,5 +66,5 @@ This project became my little playground for tinkering with Cursor and having so
 
 ---
 
-## 🔖 License  
+##  License  
 MIT — feel free to fork, play, and modify!  
